@@ -5,7 +5,7 @@ import { useRef } from "react"
 import { useMediaQuery } from "react-responsive"
 
 export default function Hero() {
-  const videoRef = useRef(null)
+  const videoRef = useRef<HTMLVideoElement | null>(null)
   const isMobile = useMediaQuery({ maxWidth: 767 })
   useGSAP(() => {
     const heroSplit = new SplitText(".title", { type: "chars, words" })
@@ -44,9 +44,13 @@ export default function Hero() {
     const startValue = isMobile ? "top 50%" : "center 60%"
     const endValue = isMobile ? "120% top" : "bottom top"
 
+    const video = videoRef.current
+
+    if (!video) return
+
     const vTimeline = gsap.timeline({
       scrollTrigger: {
-        trigger: "video",
+        trigger: video,
         start: startValue,
         end: endValue,
         scrub: true,
@@ -54,9 +58,9 @@ export default function Hero() {
       },
     })
 
-    videoRef.current.onloadedmetadata = () => {
-      vTimeline.to(videoRef.current, {
-        currentTime: videoRef.current.duration,
+    video.onloadedmetadata = () => {
+      vTimeline.to(video, {
+        currentTime: video.duration,
       })
     }
   }, [])
