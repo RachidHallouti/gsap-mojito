@@ -50,7 +50,7 @@ export default function Hero() {
 
     const vTimeline = gsap.timeline({
       scrollTrigger: {
-        trigger: "video",
+        trigger: ".video",
         start: startValue,
         end: endValue,
         scrub: true,
