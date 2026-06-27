@@ -89,7 +89,6 @@ export default function Hero() {
             </div>
             <div className="view-cocktails">
               <p className="subtitle">
-                {" "}
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
                 aliquam officia quis doloremque, possimus nesciunt odio
                 consectetur veniam nostrum debitis cum facilis totam cupiditate
